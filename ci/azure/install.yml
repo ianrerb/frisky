@@ -1,0 +1,21 @@
+parameters:
+  env_file: ci/requirements/py36.yml
+
+steps:
+
+- template: add-conda-to-path.yml
+
+- bash: |
+    conda env create -n frisky-tests --file ${{ parameters.env_file }}
+  displayName: Install conda dependencies
+
+- bash: |
+    source activate frisky-tests
+    pip install --no-deps -e .
+  displayName: Install frisky
+
+- bash: |
+    source activate frisky-tests
+    conda info -a
+    conda list
+  displayName: Version info

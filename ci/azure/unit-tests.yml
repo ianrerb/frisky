@@ -1,0 +1,8 @@
+steps:
+
+- template: install.yml
+
+- bash: |
+    source activate frisky-tests
+    python -OO -c "import frisky"
+  displayName: Import frisky

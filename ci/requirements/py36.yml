@@ -1,0 +1,12 @@
+name: frisky-tests
+channels:
+  - conda-forge
+dependencies:
+  - xarray
+  - pytest
+  - flake8
+  - numpy>=1.12
+  - pandas>=0.19
+  - pip
+  - scipy
+  - black

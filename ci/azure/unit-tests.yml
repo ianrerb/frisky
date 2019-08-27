@@ -6,3 +6,8 @@ steps:
     source activate frisky-tests
     python -OO -c "import frisky"
   displayName: Import frisky
+
+- bash: |
+    source activate frisky-tests
+    pytest frisky
+  displayName: Run Unit Tests

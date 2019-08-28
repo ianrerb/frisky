@@ -24,7 +24,7 @@ def sec_index():
 
 @pytest.fixture(scope="module")
 def date_index():
-    return pd.date_range("1984-07-22", periods=NUM_DATES, freq="B", name="date")
+    return pd.date_range("2014-04-17", periods=NUM_DATES, freq="B", name="date")
 
 
 @pytest.fixture(scope="module")
@@ -145,7 +145,7 @@ def test_beta_one(rdata, equal_weights):
 
 def test_beta_scales(rdata, equal_weights):
     result = calc.portfolio_beta(equal_weights, 2.0 * equal_weights, rdata)
-    assert (np.abs(result - .5) < 1e-6).values.all()
+    assert (np.abs(result - 0.5) < 1e-6).values.all()
 
     result = calc.portfolio_beta(2.0 * equal_weights, equal_weights, rdata)
     assert (np.abs(result - 2.0) < 1e-6).values.all()

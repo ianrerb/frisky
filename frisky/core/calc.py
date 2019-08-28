@@ -45,6 +45,11 @@ def portfolio_beta(weights, index_weights, rdata):
     return cov / var
 
 
+def security_beta(index_weights, rdata):
+    sw = sigma_w(index_weights, rdata)
+    return sw / (index_weights * sw).sum("security")
+
+
 def risk_contribution(weights, rdata):
     sw = sigma_w(weights, rdata)
     return sw / (weights * sw).sum("security") ** 0.5

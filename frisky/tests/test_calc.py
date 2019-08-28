@@ -1,9 +1,9 @@
 import numpy as np
-from numpy.testing import assert_almost_equal
 import pandas as pd
 import pytest
-
 import xarray as xr
+from numpy.testing import assert_almost_equal
+
 from frisky.core import calc
 
 NUM_FACTORS = 2
@@ -160,4 +160,3 @@ def test_risk_contrib_vol_equation(rdata, equal_weights):
     result = (equal_weights * contrib).sum("security")
 
     assert_almost_equal(vol.values, result.values)
-

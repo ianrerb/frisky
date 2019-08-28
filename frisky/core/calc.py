@@ -40,11 +40,11 @@ def volatility(weights, rdata):
 
 def portfolio_beta(weights, index_weights, rdata):
     sw = sigma_w(index_weights, rdata)
-    var = index_weights.dot(sw, dims=["security"])
-    cov = weights.dot(sw, dims=["security"])
+    var = (index_weights * sw).sum("security")
+    cov = (weights * sw).sum("security")
     return cov / var
 
 
 def risk_contribution(weights, rdata):
     sw = sigma_w(weights, rdata)
-    return sw / weights.dot(sw, dims=["security"]) ** 0.5
+    return sw / (weights * sw).sum("security") ** 0.5
